@@ -5,7 +5,7 @@ uproto implements class inheritance for ES4 on basis of prototype. In addition, 
 ## Getting Started
 
 ```shell
-$ npm install --save cconf
+$ npm install --save uproto
 ```
 
 ## Overview

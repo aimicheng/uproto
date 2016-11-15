@@ -1,6 +1,6 @@
 {
   "name": "uproto",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "User defined Prototype system",
   "main": "index.js",
   "directories": {
