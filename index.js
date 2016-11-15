@@ -68,7 +68,7 @@ var uproto = {
         });
         return dest_obj;
     },
-    extends: function(TypeName, ParentType, prototype_obj) {
+    createClass: function(TypeName, ParentType, prototype_obj) {
         //check params
         if (typeof ParentType === 'string') {
             ParentType = this.import(ParentType);

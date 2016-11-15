@@ -8,8 +8,8 @@ it('namespace should pass', function() {
     assert(current_ns === 'test');
 });
 
-it('extends should pass', function() {
-    var A = uproto.extends('A', Object, {
+it('createClass should pass', function() {
+    var A = uproto.createClass('A', Object, {
         init: function(opt) {
             this.a = 'a';
         },
@@ -37,9 +37,9 @@ it('import should pass', function() {
     assert(A1 === A2);
 });
 
-it('extends from internal type should pass', function() {
+it('createClass from internal type should pass', function() {
     var A = uproto.import('A');
-    var B = uproto.extends('B', 'test.A', {
+    var B = uproto.createClass('B', 'test.A', {
         init: function() {
             this.b = 'b';
         },

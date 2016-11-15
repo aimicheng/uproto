@@ -20,7 +20,7 @@ var uproto = require('uproto');
 uproto.namespace('test');
 
 //define a base object class extends from Object
-uproto.extends('Object', Object, {});
+uproto.createClass('Object', Object, {});
 
 //use the base object class
 var BaseObject = uproto.import('test.Object');
@@ -29,7 +29,7 @@ var BaseObject = uproto.import('test.Object');
 uproto.namespace('test.exception');
 
 //define a base Exception class
-var Exception = uproto.extends('Exception', BaseObject, {
+var Exception = uproto.createClass('Exception', BaseObject, {
     init: function(code, message) {
         this.code = code;
         this.message = message;
@@ -40,7 +40,7 @@ var Exception = uproto.extends('Exception', BaseObject, {
 });
 
 //define test.exception.InputException extends from test.exception.Exception
-var InputException = uproto.extends('InputException', Exception);
+var InputException = uproto.createClass('InputException', Exception);
 var e = new InputException(1, "email invalid.");
 console.log('' + e);
 ```
