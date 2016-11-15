@@ -80,6 +80,10 @@ var uproto = {
         if (typeof TypeName !== 'string') {
             throw new Error('param TypeName must be a string.');
         }
+
+        if (!prototype_obj) {
+            prototype_obj = {};
+        }
         if (typeof prototype_obj !== 'object') {
             throw new Error('param prototype_obj must be an object.');
         }
@@ -96,9 +100,6 @@ var uproto = {
             throw new Error('type already defined: ' + TypeName);
         }
 
-        if (!prototype_obj) {
-            prototype_obj = {};
-        }
         if (!prototype_obj.init) {
             prototype_obj.init = EMPTY_FUNC;
         }
