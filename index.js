@@ -104,6 +104,7 @@ var uproto = {
             prototype_obj.init = EMPTY_FUNC;
         }
 
+        //constructor
         var T = ns[TypeName] = function () {
             ParentType.apply(this, arguments);
 
@@ -112,11 +113,13 @@ var uproto = {
                 ParentType.prototype.init.apply(this, arguments);
             }
             this.init(arguments);
-        }
+        };
 
         T.prototype = Object.create(ParentType.prototype);
         this.merge(T.prototype, prototype_obj);
         T.prototype.constructor = T;
+        //save Parent class
+        T.__parent = ParentType;
         return T;
     }
 };
