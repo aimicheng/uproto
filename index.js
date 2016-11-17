@@ -3,6 +3,13 @@ var namespace_cache = {};
 var EMPTY_FUNC = function() {};
 var NS_SP = '.';
 
+var instance_funcs = {
+    init: EMPTY_FUNC,
+    getClass: function() {
+        return this.constructor;
+    }
+};
+
 var uproto = {
     ns: 'default',
     import: function(TypeName) {
@@ -101,8 +108,11 @@ var uproto = {
             throw new Error('type already defined: ' + TypeName);
         }
 
-        if (!prototype_obj.init) {
-            prototype_obj.init = EMPTY_FUNC;
+        //add defeult instance func
+        for (var name in instance_funcs) {
+            if (!prototype_obj[name]) {
+                prototype_obj[name] = instance_funcs[name];
+            }
         }
 
         //constructor
@@ -121,6 +131,14 @@ var uproto = {
         T.__parent = ParentType;
         T.__namespace = ns;
         T.__name = TypeName;
+
+        T.getParentClass = function() {
+            return this.__parent;
+        };
+        T.getNamespace = function() {
+            return this.__namespace;
+        }
+
         return T;
     }
 };

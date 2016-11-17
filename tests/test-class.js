@@ -55,6 +55,7 @@ it('createClass from internal type should pass', function() {
     assert(b);
     assert(b instanceof A);
     assert(b instanceof B);
+    assert(b.getClass() === B);
     assert(b.a === 'a');
     assert(b.b === 'b');
     assert(b.test_a() === 'func a');
