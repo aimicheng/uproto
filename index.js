@@ -92,7 +92,8 @@ var uproto = {
         var namespace_str = this.ns,
             pos = TypeName.lastIndexOf(NS_SP);
         if (pos > -1) {
-            namespace_str = TypeName.substr(0, NS_SP);
+            namespace_str = TypeName.substr(0, pos);
+            TypeName = TypeName.substr(pos + 1);
         }
         var ns = this._resolve_namespace(namespace_str);
         //forbid redefine
