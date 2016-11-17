@@ -107,12 +107,10 @@ var uproto = {
         //constructor
         var T = ns[TypeName] = function () {
             ParentType.apply(this, arguments);
-
-            //call parent init
-            if (ParentType.prototype.init) {
-                ParentType.prototype.init.apply(this, arguments);
-            }
-            this.init(arguments);
+            /*
+             * Can not use this.init(arguments) here, Because ParentType.apply changed "this" in parent constructor.
+             */
+            T.prototype.init.apply(this, arguments);
         };
 
         T.prototype = Object.create(ParentType.prototype);
@@ -120,6 +118,8 @@ var uproto = {
         T.prototype.constructor = T;
         //save Parent class
         T.__parent = ParentType;
+        T.__namespace = ns;
+        T.__name = TypeName;
         return T;
     }
 };
