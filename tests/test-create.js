@@ -1,7 +1,7 @@
-var uproto = require('../index');
+var up = require('../index');
 
-uproto.namespace('kuaizhan.model');
-var DataProvider = uproto.createClass('DataProvider', Object, {
+up.namespace('kuaizhan.model');
+var DataProvider = up.createClass('DataProvider', Object, {
     init: function() {
         console.log(this.constructor.__name);
         console.log("DataProvider init.");
@@ -9,7 +9,7 @@ var DataProvider = uproto.createClass('DataProvider', Object, {
 });
 
 
-var MySQLDataProvider = uproto.createClass('MySQLDataProvider', 'DataProvider', {
+var MySQLDataProvider = up.createClass('MySQLDataProvider', 'DataProvider', {
     init: function(p) {
         console.log(this.constructor.__name);
         console.log("MySQLDataProvider init.");

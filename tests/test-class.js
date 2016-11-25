@@ -1,15 +1,15 @@
-var uproto = require('../index');
+var up = require('../index');
 var assert = require('assert');
 
 
 it('namespace should pass', function() {
-    uproto.namespace('test');
-    var current_ns = uproto.namespace();
+    up.namespace('test');
+    var current_ns = up.namespace();
     assert(current_ns === 'test');
 });
 
 it('createClass should pass', function() {
-    var A = uproto.createClass('A', Object, {
+    var A = up.createClass('A', Object, {
         init: function(opt) {
             this.a = 'a';
         },
@@ -32,14 +32,14 @@ it('createClass should pass', function() {
 });
 
 it('import should pass', function() {
-    var A1 = uproto.import('A'),
-        A2 = uproto.import('test.A');
+    var A1 = up.import('A'),
+        A2 = up.import('test.A');
     assert(A1 === A2);
 });
 
 it('createClass from internal type should pass', function() {
-    var A = uproto.import('A');
-    var B = uproto.createClass('B', 'test.A', {
+    var A = up.import('A');
+    var B = up.createClass('B', 'test.A', {
         init: function() {
             this.b = 'b';
         },

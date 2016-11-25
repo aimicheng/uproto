@@ -14,22 +14,22 @@ $ npm install --save uproto
 Here is an example:
 
 ```js
-var uproto = require('uproto');
+var up = require('uproto');
 
 //switch to namespace test
-uproto.namespace('test');
+up.namespace('test');
 
 //define a base object class extends from Object
-uproto.createClass('Object', Object, {});
+up.createClass('Object', Object, {});
 
 //use the base object class
-var BaseObject = uproto.import('test.Object');
+var BaseObject = up.import('test.Object');
 
 //switch to namespce test.exception
-uproto.namespace('test.exception');
+up.namespace('test.exception');
 
 //define a base Exception class
-var Exception = uproto.createClass('Exception', BaseObject, {
+var Exception = up.createClass('Exception', BaseObject, {
     init: function(code, message) {
         this.code = code;
         this.message = message;
@@ -40,7 +40,7 @@ var Exception = uproto.createClass('Exception', BaseObject, {
 });
 
 //define test.exception.InputException extends from test.exception.Exception
-var InputException = uproto.createClass('InputException', Exception);
+var InputException = up.createClass('InputException', Exception);
 var e = new InputException(1, "email invalid.");
-console.log('' + e);
+console.log('' + e); //output: [1 : email invalid.]
 ```
