@@ -132,6 +132,13 @@ var uproto = {
         T.__namespace = ns;
         T.__name = TypeName;
 
+        var m = this;
+        T.addClassFuncs = function(func_map) {
+            m.merge(T, func_map);
+        };
+        T.addInstanceFuncs = function(func_map) {
+            m.merge(T.prototype, func_map);
+        };
         T.getParentClass = function() {
             return this.__parent;
         };
